@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  inventory-service-02:
+    build: ./inventory_service_02
+    container_name: inventory-service-02
+    environment:
+      - STUDENT_N=2
+    ports:
+      - "8002:8000"  # Зовнішній порт 8000 + 2
+    networks:
+      - cafe-net
+
+  order-service-02:
+    build: ./order_service_02
+    container_name: order-service-02
+    environment:
+      - STUDENT_N=2
+    ports:
+      - "9002:8000"  # Зовнішній порт 9000 + 2
+    depends_on:
+      - inventory-service-02
+    networks:
+      - cafe-net
+
+networks:
+  cafe-net:
+    driver: bridge
