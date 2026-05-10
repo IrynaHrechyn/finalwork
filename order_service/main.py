@@ -6,7 +6,7 @@ app = FastAPI(title="Order Service 02")
 
 STUDENT_N = int(os.getenv("STUDENT_N", 2))
 # Звертаємось до першого сервісу за назвою контейнера з docker-compose
-INVENTORY_SERVICE_URL = "http://inventory-service-02:8000"
+INVENTORY_SERVICE_URL = "http://inventory-service:8000"
 
 
 @app.post("/orders/{item_id}")

@@ -1,25 +1,25 @@
 version: '3.8'
 
 services:
-  inventory-service-02:
-    build: ./inventory_service_02
-    container_name: inventory-service-02
+  inventory-service:
+    build: ./inventory_service
+    container_name: inventory-service
     environment:
       - STUDENT_N=2
     ports:
-      - "8002:8000"  # Зовнішній порт 8000 + 2
+      - "8002:8000" 
     networks:
       - cafe-net
 
-  order-service-02:
-    build: ./order_service_02
-    container_name: order-service-02
+  order-service:
+    build: ./order_service
+    container_name: order-service
     environment:
       - STUDENT_N=2
     ports:
-      - "9002:8000"  # Зовнішній порт 9000 + 2
+      - "9002:8000"
     depends_on:
-      - inventory-service-02
+      - inventory-service
     networks:
       - cafe-net
 
